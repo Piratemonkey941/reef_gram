@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     get '/users/sign_out'   => 'devise/sessions#destroy'
   end
   
+  get 'my_posts', to: 'posts#my_posts'
+  # get 'posts/myposts'
 end

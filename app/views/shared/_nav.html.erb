@@ -15,22 +15,28 @@
           <%= link_to "About", home_about_path, class: "nav-link active", aria: { current: "page" } %>
         </li>
 
-        <% if user_signed_in? %>
+      <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Sign-out", destroy_user_session_path, class: "nav-link active", aria: { current: "page" } %>
           </li>
+         <li class="nav-item">
+          <%= link_to "My Posts", posts_path,class:"nav-link active"%>
+        </li>
+
+         
+
           <li class="nav-item">
               <%= link_to "Account", edit_user_registration_path, class: "nav-link active", aria: { current: "page" } %>
           </li>
-        
-        <% else %>
-         <li class="nav-item">
+      
+      <% else %>
+        <li class="nav-item">
               <%= link_to "Login", user_session_path, class: "nav-link active", aria: { current: "page" } %>
           </li>
           <li class="nav-item">
               <%= link_to "Sign-up", new_user_registration_path, class: "nav-link active", aria: { current: "page" } %>
           </li>
-         
+        
        <% end  %>
       </ul>
      
