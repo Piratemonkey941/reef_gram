@@ -4,8 +4,8 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = current_user.posts
-    # @posts = Post.all
+    # @posts = current_user.posts
+    @posts = Post.all
   end
 
   # GET /posts/1 or /posts/1.json
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def my_posts
+  def myposts
     @posts = current_user.posts
   end
  
