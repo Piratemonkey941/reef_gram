@@ -1,22 +1,38 @@
-<p style="color: green"><%= notice %></p>
+<div 
+    class="col-xl-4 col-md-6 col-sm-8 col-10" 
+    style="
+            margin: auto;
+            background-color: #f8f8f8;
+            border-radius: 6px;
+            padding:15px;
+          "
+>
+  <p style="color: green"><%= notice %></p>
 
-<%= render @post %>
-
-<div>
-  <%= link_to "Back to posts", posts_path %>
-  <% if user_signed_in? %>
-  <% if current_user.id == @post.user.id %>
-    <div>
-      <%= link_to "Edit this post", edit_post_path(@post) %> |
-      <%= button_to "Destroy this post", @post, method: :delete %>
-    </div>
-  <% end %>
-<% end %>
+  <%= render @post %>
 
   
+  <%= link_to "Back to posts", posts_path %>
+  <% if user_signed_in? %>
+    <% if current_user.id == @post.user.id %>
+      <div>
+        <%= link_to "Edit this post", edit_post_path(@post) %> |
+        <%= button_to "Destroy this post", @post, method: :delete, class:"btn btn-danger col-3" %>
+      </div>
+    <% end %>
+  <% end %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+  <%= render "comments/form", comment: @comment %>
+
+   <% @post.comments.each do |comment| %>
+
+    <%= comment.text %>
+  <% end %>
 </div>
+    
+
+    
+  
 
 
 

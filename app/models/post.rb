@@ -7,6 +7,8 @@ class Post < ApplicationRecord
 
     belongs_to :user
 
+    has_many :comments
+
     before_create :randomize_id
     
     private
