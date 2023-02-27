@@ -11,22 +11,19 @@
         <li class="nav-item">
           <%= link_to "Add Post", new_post_path, class: "nav-link active", aria: { current: "page" } %>
         </li>
-        <li class="nav-item">
-          <%= link_to "About", home_about_path, class: "nav-link active", aria: { current: "page" } %>
-        </li>
-
+        
       <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Sign-out", destroy_user_session_path, class: "nav-link active", aria: { current: "page" } %>
+            <%= link_to "Profile", current_user, class: "nav-link active", aria: { current: "page" } %>
           </li>
-         <li class="nav-item">
+          <li class="nav-item">
           <%= link_to "My Posts", myposts_path,class:"nav-link active"%>
-        </li>
-
-         
-
+          </li>
           <li class="nav-item">
               <%= link_to "Account", edit_user_registration_path, class: "nav-link active", aria: { current: "page" } %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign-out", destroy_user_session_path, class: "nav-link active", aria: { current: "page" } %>
           </li>
       
       <% else %>
@@ -38,6 +35,10 @@
           </li>
         
        <% end  %>
+
+       <li class="nav-item">
+          <%= link_to "About", home_about_path, class: "nav-link active", aria: { current: "page" } %>
+        </li>
       </ul>
      
     </div>
