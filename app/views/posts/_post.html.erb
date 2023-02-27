@@ -1,35 +1,41 @@
-<div id="<%= dom_id post %>" 
-      class=" text-center post-container col-6" 
-      style=" margin: auto;"
->
- 
-
-  
- 
+<div id="<%= dom_id post %>" class="text-center post-container col-6" style="margin: auto;">
   <p>
-    
-    <%= link_to "", post.user, class:"post-link" %>
+    <%#= post.description %>
   </p>
-
+  <p>
+    <%#= link_to "", post, class:"post-link", style:"z-index:" %>
+  </p>
+ 
   <% post.images.each do |image| %>
-
-      <%= image_tag(image, style: " max-width: 50%; height: auto; objext-fit: contain; ") %>
+    <%= image_tag(image, style: "
+      max-width: 50%;
+  height: auto; object-fit: contain;") %>
   <% end %>
-
- <p>
-        <%= post.title %>
+  <p>
+    <%= post.title %>
   </p>
+
+      <% if user_signed_in? %>
+            <% like = current_user.likes.find_by(post: post) %>
+            <% if like.nil? %>
+                  <%= button_to "like", likes_path, params: { like: { post_id: post.id }}, method: :post, class:" btn btn-primary"%>
+            <% else %>
+                  <%= button_to "Unlike", like_path(like), method: :delete, class:" btn btn-primary" %>
+            <% end %>
+      <% end %>
+
+  <p> <%= post.likes.count %> Likes </p>
+
 </div>
 
 
+      <p>
+            <%#= post.description %>
+      </p>
 
-<p>
-        <%#= post.description %>
-  </p>
-
-  <p>
-        <%#= post.keywords %>
-  </p>
-  <p>
-        <%#= post.user.email %>
-  </p>
+      <p>
+            <%#= post.keywords %>
+      </p>
+      <p>
+            <%#= post.user.email %>
+      </p>
