@@ -1,10 +1,5 @@
 <div id="<%= dom_id post %>" class="text-center post-container col-6" style="margin: auto;">
-  <p>
-    <%#= post.description %>
-  </p>
-  <p>
-    <%#= link_to "", post, class:"post-link", style:"z-index:" %>
-  </p>
+
  
   <% post.images.each do |image| %>
     <%= image_tag(image, style: "
@@ -39,3 +34,7 @@
       <p>
             <%#= post.user.email %>
       </p>
+   
+  <p>
+    <%#= link_to "", post, class:"post-link", style:"z-index:" %>
+  </p>
