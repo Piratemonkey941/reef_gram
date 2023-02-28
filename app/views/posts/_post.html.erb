@@ -2,10 +2,11 @@
 
  
   <% post.images.each do |image| %>
-    <%= image_tag(image, style: "
-      max-width: 50%;
-  height: auto; object-fit: contain;") %>
+    <%= image_tag(image, style: "max-width: 50%; height: auto; object-fit: contain;") %>
   <% end %>
+  <p>
+    <%= link_to "", post, class:"post-link", style:"z-index:" %>
+  </p>
   <p>
     <%= post.title %>
   </p>
@@ -35,6 +36,4 @@
             <%#= post.user.email %>
       </p>
    
-  <p>
-    <%#= link_to "", post, class:"post-link", style:"z-index:" %>
-  </p>
+  
