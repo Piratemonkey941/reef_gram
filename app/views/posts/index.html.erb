@@ -6,6 +6,10 @@
   <% end %>
 
   <% if user_signed_in? %>
+    <% if current_user.admin %>
+      <h4 style="color: green" > You are an Admin </h4>
+    <% end %>
+    
     <% current_user.follow_requests.each do |request| %>
       <%= request.followerable.email %> <p> Wants to Follow you! </p> 
       <%= button_to "Accept", accept_path(request.followerable) %>

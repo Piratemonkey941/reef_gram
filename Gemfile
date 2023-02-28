@@ -54,6 +54,8 @@ gem "devise"
 
 gem "followability"
 gem "ransack"
+gem "rails_admin"
+
 
 
 
@@ -84,3 +86,8 @@ group :test do
 end
 
 
+
+
+
+# gem "cssbundling-rails"
+gem "cssbundling-rails"
