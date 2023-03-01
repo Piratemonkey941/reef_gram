@@ -16,9 +16,11 @@
         <%= button_to "Follow", follow_path(@user)%>
       <% end %>
     <% end %>
+    <hr>
     <% @user.followers.each do |follower| %>
       <%= render follower %>
     <% end %>
+    <hr>
     <% @user.following.each do |following| %>
       <%= render following %>
     <% end %>

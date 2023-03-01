@@ -15,6 +15,11 @@ class PostsController < ApplicationController
   def show
     
   end
+
+  def discover
+    @posts = Post.all
+  end
+  
   def show
     @comment = @post.comments.build
   end

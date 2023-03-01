@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'users/:id/cancel',    to:"users#cancel",    as:"cancel"
 
   get 'myposts', to: 'posts#myposts'
+  get 'discover', to: 'posts#discover'
   get 'home/about'
   resources :posts
   root "posts#index"
