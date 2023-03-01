@@ -46,7 +46,7 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 #bootstrap 5. something
-gem "bootstrap"
+# gem "bootstrap"
 
 #devise for authentication
 gem "devise"
@@ -55,6 +55,7 @@ gem "devise"
 gem "followability"
 gem "ransack"
 gem "rails_admin"
+gem "pagy"
 
 
 

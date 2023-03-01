@@ -22,9 +22,16 @@
 
   <p> <%= post.likes.count %> Likes </p>
 
+  <div class="link-wrapper">
+  <%= link_to post.user.email, post.user, style: "z-index: 11;" %>
+      </div>
+  
+
 </div>
 
-
+      <div>
+            <%#= post.user.id %>
+      </div>
       <p>
             <%#= post.description %>
       </p>
@@ -32,8 +39,6 @@
       <p>
             <%#= post.keywords %>
       </p>
-      <p>
-            <%#= post.user.email %>
-      </p>
+      
    
   

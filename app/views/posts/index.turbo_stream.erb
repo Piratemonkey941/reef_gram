@@ -1,0 +1,22 @@
+ <!-- POSTS SHOULD BE RENDERED HERE AND THEN PULLED TO THE INDEX WITH THAT TURBO_STREAM CODE -->
+
+<%= turbo_stream.append :posts do %>                <!-- Append the following content to the Turbo stream with the identifier :posts -->
+  <% @posts.each do |post| %>                       <!-- For each post in the @posts collection, iterate over them -->
+    <% if user_signed_in? %>                        <!-- Check if a user is signed in -->
+      <% if current_user.following?(post.user) %>   <!-- Check if the current user is following the author of the post -->
+        <%= render post %>                          <!-- Render the post if the current user is following the author -->
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if !user_signed_in? %>                         <!-- If a user is not signed in -->
+    <% @posts.each do |post| %>                     <!-- Iterate over all the posts -->
+      <%= render post%>                             <!-- Render the post -->
+    <% end %>
+  <% end %>
+<% end %>                                           <!-- End of the Turbo stream block -->
+
+<% if @pagy.next.present? %>                        <!-- If there is a next page of posts available -->
+  <%= turbo_stream.replace :pagination do %>        <!-- Replace the content of the Turbo stream with the identifier :pagination with the following -->
+    <%= turbo_frame_tag :pagination, loading: :lazy, src: posts_path(format: :turbo_stream, page: @pagy.next) %>  <!-- Render a new pagination frame using the posts_path with a format of :turbo_stream and the next page of posts -->
+  <% end %>
+<% end %>                                           <!-- End of the pagination block -->

@@ -1,32 +1,45 @@
 <%= stylesheet_link_tag("post") %>
-<p style="color: green"><%= notice %></p>
-<div id="posts" class="text-center">
-  <% @posts.each do |post| %>
-    <%= render post %>
-  <% end %>
 
+<p style="color: green"><%= notice %></p>
+
+<div id="posts" class="text-center">
   <% if user_signed_in? %>
-    <% if current_user.admin %>
-      <h4 style="color: green" > You are an Admin </h4>
-    <% end %>
-    
+    <%# if current_user.admin %>
+      <!-- <h4 style="color: green" > You are an Admin </h4> -->
+    <%# end %>
+
+    <!-- FOLLOWERS COUNT  -->
+
     <% current_user.follow_requests.each do |request| %>
-      <%= request.followerable.email %> <p> Wants to Follow you! </p> 
+      <%= request.followerable.email %> Wants to follow you 
       <%= button_to "Accept", accept_path(request.followerable) %>
       <%= button_to "Decline", decline_path(request.followerable) %>
     <% end %>
 
-    <p> Followers</p>
+    Followers
     <% current_user.followers.each do |follower| %>
       <p> <b> <%= link_to follower.email, follower %> </b> </p>
     <% end %>
 
-    <p> Following </p>
+    Following
     <% current_user.following.each do |following| %>
-      <p>  <%= link_to following.email, following %> </p>
+      <p> <%= link_to following.email, following %> </p>
     <% end %>
   <% end %>
-    
+
+<hr> <!-- RENDERED POSTS -->
+
+ <% @posts.each do |post| %>
+    <%= render post %>
+  <% end %>
+  <hr>
+
+  <%= turbo_frame_tag :results, data: { turbo_action: 'advance' } do %>   <!-- Render a Turbo frame with the identifier :results and a data attribute for turbo_action -->
+    <div id="posts"></div>                                                <!-- Render an empty div with an id of "posts" -->
+    <%= turbo_frame_tag :pagination, loading: :lazy, src: posts_path(format: :turbo_stream) %> <!-- Render a Turbo frame with the identifier :pagination and a data attribute for loading, that loads the posts_path with a format of :turbo_stream -->
+  <% end %> 
+  <hr>
+  
 </div>
 
 

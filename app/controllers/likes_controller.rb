@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     if !@like.save
       flash[:alert] = "You already liked this"
     end
-    redirect_to root_path
+    redirect_to @like.post
 
   end
 
@@ -13,7 +13,7 @@ class LikesController < ApplicationController
 
     @like = current_user.likes.find(params[:id])
     @like.destroy
-    redirect_to root_path
+    redirect_to @like.post
 
   end
 
