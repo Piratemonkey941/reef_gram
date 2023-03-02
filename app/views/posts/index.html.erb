@@ -1,37 +1,16 @@
+
 <%= stylesheet_link_tag("post") %>
 
 <p style="color: green"><%= notice %></p>
 
 <div id="posts" class="text-center">
-  <% if user_signed_in? %>
-    <%# if current_user.admin %>
-      <!-- <h4 style="color: green" > You are an Admin </h4> -->
-    <%# end %>
+  
 
-    <!-- FOLLOWERS COUNT  -->
+ <!-- RENDERED POSTS -->
 
-    <% current_user.follow_requests.each do |request| %>
-      <%= request.followerable.email %> Wants to follow you 
-      <%= button_to "Accept", accept_path(request.followerable) %>
-      <%= button_to "Decline", decline_path(request.followerable) %>
-    <% end %>
-
-    Followers
-    <% current_user.followers.each do |follower| %>
-      <p> <b> <%= link_to follower.email, follower %> </b> </p>
-    <% end %>
-
-    Following
-    <% current_user.following.each do |following| %>
-      <p> <%= link_to following.email, following %> </p>
-    <% end %>
-  <% end %>
-
-<hr> <!-- RENDERED POSTS -->
-
- <% @posts.each do |post| %>
-    <%= render post %>
-  <% end %>
+ <%# @posts.each do |post| %>
+    <%#= render post %>
+  <%# end %>
 
  
 
@@ -40,7 +19,7 @@
     <%= turbo_frame_tag :pagination, loading: :lazy, src: posts_path(format: :turbo_stream) %> <!-- Render a Turbo frame with the identifier :pagination and a data attribute for loading, that loads the posts_path with a format of :turbo_stream -->
   <% end %> 
 
-  <hr>
+
 
   
   

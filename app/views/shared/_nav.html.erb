@@ -1,58 +1,106 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <%= link_to "RG Home", root_path, class: "navbar-brand active", style: "margin-left: 20px;", aria: { current: "page" } %>
-    <% if current_user && current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar, style:"width:50px; height: 50px;" %>
-    <% end  %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px;">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-        <li class="nav-item">
-          <%= link_to "Add Post", new_post_path, class: "nav-link active", aria: { current: "page" } %>
-        </li>
-        
-      <% if user_signed_in? %>
+
+  <nav class="navbar navbar-expand-md navbar-light d-flex flex-md-column ">
+    <!--<div class="container-fluid"> -->
+      <%= link_to root_path do %>
+        <%= image_tag "rg-v2.png", alt: "Your image", class: "navbar-brand active", style: "margin-left: 10px; width: 100px; height: 100px;" %>
+      <% end %>
+      <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse w-100" id="navbarSupportedContent" style="margin-left: 10px; ">
+        <ul class="navbar-nav w-100 d-flex flex-md-column text-center text-md-end">
+          
           <li class="nav-item">
-            <%= link_to "Profile", current_user, class: "nav-link active", aria: { current: "page" } %>
+            <%= link_to new_post_path, class: "nav-link active", aria: { current: "page" } do %>
+              <i class="fa-brands fa-github me-2"></i> Add Post
+            <% end %>
           </li>
+          
+        <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to  current_user, class: "nav-link active", aria: { current: "page" } do %>
+                <i class="fa-brands fa-github me-2"></i> Profile
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to  discover_path, class: "nav-link active", aria: { current: "page" } do %>
+                <i class="fa-brands fa-github me-2"></i> Discover
+              <% end %>
+            </li>
+
+          
+            <li class="nav-item">
+            <%= link_to  myposts_path,class:"nav-link active", aria: { current: "page" } do %>
+             <i class="fa-brands fa-github me-2"></i> My Posts
+            <% end %>
+            </li>
+            <li class="nav-item">
+                <%= link_to edit_user_registration_path, class: "nav-link active", aria: { current: "page" } do %>
+                  <i class="fa-brands fa-github me-2"></i> Account
+                <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to  destroy_user_session_path, class: "nav-link active", aria: { current: "page" } do %>
+                <i class="fa-brands fa-github me-2"></i> Sign Out
+              <% end %>
+            </li>
+        
+        <% else %>
           <li class="nav-item">
-            <%= link_to "Discover", discover_path, class: "nav-link active", aria: { current: "page" } %>
+                <%= link_to user_session_path, class: "nav-link active", aria: { current: "page" } do %>
+                 <i class="fa-brands fa-github me-2"></i> Login
+                <% end %>
+            </li>
+            <li class="nav-item">
+                <%= link_to  new_user_registration_path, class: "nav-link active", aria: { current: "page" } do %>
+                 <i class="fa-brands fa-github me-2"></i> Sign-up
+                <% end %>
+            </li>
+          
+        <% end  %>
+
+          <li class="nav-item">
+            <%= link_to  home_about_path, class: "nav-link active", aria: { current: "page" } do %>
+             <i class="fa-brands fa-github me-2"></i> About
+            <% end %>
           </li>
 
-         
           <li class="nav-item">
-          <%= link_to "My Posts", myposts_path,class:"nav-link active"%>
+            <%= form_with url: profiles_index_path, method: :get, class: "d-flex" do |form|  %>
+              <%= form.search_field :query, value: params[:query], placeholder: "Search", class: "form-control me-1"  %>
+              <%= form.submit "Search", class: "btn btn-outline-primary" %>
+            <% end  %>
           </li>
-          <li class="nav-item">
-              <%= link_to "Account", edit_user_registration_path, class: "nav-link active", aria: { current: "page" } %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign-out", destroy_user_session_path, class: "nav-link active", aria: { current: "page" } %>
-          </li>
-      
-      <% else %>
-        <li class="nav-item">
-              <%= link_to "Login", user_session_path, class: "nav-link active", aria: { current: "page" } %>
-          </li>
-          <li class="nav-item">
-              <%= link_to "Sign-up", new_user_registration_path, class: "nav-link active", aria: { current: "page" } %>
-          </li>
-        
-       <% end  %>
+        </ul>
 
-       <li class="nav-item">
-          <%= link_to "About", home_about_path, class: "nav-link active", aria: { current: "page" } %>
-        </li>
-      </ul>
+      </div>
+    
+  </nav>
 
-      <%= form_with url: profiles_index_path, method: :get, class: "d-flex" do |form|  %>
-        <%= form.search_field :query, value: params[:query], placeholder: "Search", class: "form-control me-2"  %>
-        <%= form.submit "Search", class: "btn btn-outline-primary" %>
-      <% end  %>
-     
-    </div>
-  </div>
-</nav>
+<style>
+
+   
+  
+  @media (max-width: 767px) {
+  .navbar {
+    height: 150px;
+    z-index: 100;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    height: 425px;
+  }
+}
+
+</style>

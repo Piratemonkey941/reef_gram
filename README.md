@@ -22,3 +22,37 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+CODE GRAVEYARD 
+
+FOLLOWERS COUNT WAS IN INDEX.HTML.ERB
+<% if user_signed_in? %>
+    <%# if current_user.admin %>
+      <!-- <h4 style="color: green" > You are an Admin </h4> -->
+    <%# end %>
+
+    <!-- FOLLOWERS COUNT  -->
+
+    <% current_user.follow_requests.each do |request| %>
+      <%= request.followerable.email %> Wants to follow you 
+      <%= button_to "Accept", accept_path(request.followerable) %>
+      <%= button_to "Decline", decline_path(request.followerable) %>
+    <% end %>
+
+    Followers
+    <% current_user.followers.each do |follower| %>
+      <p> <b> <%= link_to follower.email, follower %> </b> </p>
+    <% end %>
+
+    Following
+    <% current_user.following.each do |following| %>
+      <p> <%= link_to following.email, following %> </p>
+    <% end %>
+  <% end %>
+
+
+USER IMAGE
+  <% if current_user && current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, style:"width:50px; height: 50px;" %>
+      <% end  %>

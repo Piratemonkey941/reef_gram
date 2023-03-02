@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def index
     # @posts = current_user.posts
     @posts = Post.order(:created_at => :asc)
-    @pagy, @posts = pagy_countless(@posts, items: 5)
+    @pagy, @posts = pagy_countless(@posts, items: 1)
   end
 
   # GET /posts/1 or /posts/1.json
