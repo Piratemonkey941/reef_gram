@@ -16,13 +16,17 @@
 
   <body>
   <div class="container d-flex flex-column flex-md-row" style="margin-left:20px;">
-    <%= render "shared/nav" %>
+    <div style="z-index; 1;">
+      <%= render "shared/nav" %>
+    </div>
     <main class="ps-0 ps-md-5 flex-grow-1 " >
       <%= yield %>
     </main>
     
   </div>
-  <%= render "shared/footer" %>
+  <div style="z-index; 10;">
+     <%= render "shared/footer" %>
+  </div>
     
 
     

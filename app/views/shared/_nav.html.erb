@@ -1,5 +1,5 @@
 
-  <nav class="navbar navbar-expand-md navbar-light d-flex flex-md-column ">
+  <nav class="navbar  navbar-expand-md navbar-light d-flex flex-md-column align-items-start fixed-top" style="z-index: 1;" >
     <!--<div class="container-fluid"> -->
       <%= link_to root_path do %>
         <%= image_tag "rg-v2.png", alt: "Your image", class: "navbar-brand active", style: "margin-left: 10px; width: 100px; height: 100px;" %>
@@ -12,12 +12,13 @@
         aria-controls="navbarSupportedContent" 
         aria-expanded="false" 
         aria-label="Toggle navigation"
+        style="margin-right: 25px;"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse w-100" id="navbarSupportedContent" style="margin-left: 10px; ">
-        <ul class="navbar-nav w-100 d-flex flex-md-column text-center text-md-end">
+        <ul class="navbar-nav w-100 d-flex flex-md-column text-center text-md-end align-items-start">
           
           <li class="nav-item">
             <%= link_to new_post_path, class: "nav-link active", aria: { current: "page" } do %>
@@ -74,33 +75,18 @@
             <% end %>
           </li>
 
-          <li class="nav-item">
-            <%= form_with url: profiles_index_path, method: :get, class: "d-flex" do |form|  %>
-              <%= form.search_field :query, value: params[:query], placeholder: "Search", class: "form-control me-1"  %>
-              <%= form.submit "Search", class: "btn btn-outline-primary" %>
-            <% end  %>
-          </li>
+         
         </ul>
 
       </div>
     
   </nav>
 
+ 
+
 <style>
 
    
   
-  @media (max-width: 767px) {
-  .navbar {
-    height: 150px;
-    z-index: 100;
-  }
-}
-
-@media (min-width: 768px) {
-  .navbar {
-    height: 425px;
-  }
-}
 
 </style>

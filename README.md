@@ -56,3 +56,11 @@ USER IMAGE
   <% if current_user && current_user.avatar.attached? %>
             <%= image_tag current_user.avatar, style:"width:50px; height: 50px;" %>
       <% end  %>
+
+search for navbar
+<li class="nav-item">
+    <%= form_with url: profiles_index_path, method: :get, class: "d-flex" do |form|  %>
+      <%= form.search_field :query, value: params[:query], placeholder: "Search", class: "form-control me-1"  %>
+      <%= form.submit "Search", class: "btn btn-outline-primary" %>
+    <% end  %>
+  </li>
