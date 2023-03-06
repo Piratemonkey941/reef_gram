@@ -1,5 +1,5 @@
 
-  <nav class="navbar  navbar-expand-md navbar-light d-flex flex-md-column align-items-start fixed-top" style="z-index: 1;" >
+  <nav class="navbar  navbar-expand-md navbar-light d-flex flex-md-column align-items-start fixed-top w-20" style="z-index: 100; width: 200px" >
     <!--<div class="container-fluid"> -->
       <%= link_to root_path do %>
         <%= image_tag "rg-v2.png", alt: "Your image", class: "navbar-brand active", style: "margin-left: 10px; width: 100px; height: 100px;" %>
@@ -17,63 +17,59 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse w-100" id="navbarSupportedContent" style="margin-left: 10px; ">
-        <ul class="navbar-nav w-100 d-flex flex-md-column text-center text-md-end align-items-start">
+      <div class="collapse navbar-collapse w-20" id="navbarSupportedContent" style="margin-left: 10px; ">
+        <ul class="navbar-nav w-20 d-flex flex-md-column text-center text-md-end align-items-start">
           
-          <li class="nav-item">
-            <%= link_to new_post_path, class: "nav-link active", aria: { current: "page" } do %>
-              <i class="fa-brands fa-github me-2"></i> Add Post
-            <% end %>
-          </li>
+          
           
         <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to  current_user, class: "nav-link active", aria: { current: "page" } do %>
-                <i class="fa-brands fa-github me-2"></i> Profile
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to  discover_path, class: "nav-link active", aria: { current: "page" } do %>
-                <i class="fa-brands fa-github me-2"></i> Discover
-              <% end %>
-            </li>
+        <li class="nav-item">
+            <%= link_to new_post_path, class: "nav-link active", aria: { current: "page" } do %>
+              <i class="fa-regular fa-square-plus"></i> Add Post
+            <% end %>
+          </li>
 
-          
+          <li class="nav-item">
+              <%= link_to  discover_path, class: "nav-link active", aria: { current: "page" } do %>
+                <i class="fa-solid fa-earth-asia"></i> Discover
+              <% end %>
+            </li>
+            
             <li class="nav-item">
             <%= link_to  myposts_path,class:"nav-link active", aria: { current: "page" } do %>
-             <i class="fa-brands fa-github me-2"></i> My Posts
+             <i class="fa-solid fa-spaghetti-monster-flying"></i> My Posts
             <% end %>
             </li>
+            
+
             <li class="nav-item">
-                <%= link_to edit_user_registration_path, class: "nav-link active", aria: { current: "page" } do %>
-                  <i class="fa-brands fa-github me-2"></i> Account
-                <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to  destroy_user_session_path, class: "nav-link active", aria: { current: "page" } do %>
-                <i class="fa-brands fa-github me-2"></i> Sign Out
-              <% end %>
-            </li>
+            <%= link_to  home_about_path, class: "nav-link active", aria: { current: "page" } do %>
+             <i class="fa-regular fa-circle-question"></i> About
+            <% end %>
+          </li>
+
+            
         
         <% else %>
           <li class="nav-item">
                 <%= link_to user_session_path, class: "nav-link active", aria: { current: "page" } do %>
-                 <i class="fa-brands fa-github me-2"></i> Login
+                 <i class="fa-solid fa-sailboat"></i> Login
                 <% end %>
             </li>
             <li class="nav-item">
                 <%= link_to  new_user_registration_path, class: "nav-link active", aria: { current: "page" } do %>
-                 <i class="fa-brands fa-github me-2"></i> Sign-up
+                 <i class="fa-solid fa-anchor"></i> Sign-up
                 <% end %>
             </li>
+              <li class="nav-item">
+            <%= link_to  home_about_path, class: "nav-link active", aria: { current: "page" } do %>
+             <i class="fa-regular fa-circle-question"></i> About
+            <% end %>
+          </li>
           
         <% end  %>
 
-          <li class="nav-item">
-            <%= link_to  home_about_path, class: "nav-link active", aria: { current: "page" } do %>
-             <i class="fa-brands fa-github me-2"></i> About
-            <% end %>
-          </li>
+        
 
          
         </ul>

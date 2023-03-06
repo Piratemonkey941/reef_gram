@@ -31,6 +31,20 @@ class PostsController < ApplicationController
 
   def myposts
     @posts = current_user.posts
+
+    if params[:username].present?
+      @user = User.find_by(username: params[:username])
+      if @user.nil?
+        # Handle the case where the user is not found
+        redirect_to root_path, alert: "User not found"
+        return
+      end
+      @posts = @user.posts.order(created_at: :desc)
+    else
+      @user = current_user
+      @posts = current_user.posts.order(created_at: :desc)
+    end
+    render "myposts"
   end
  
 
@@ -75,6 +89,7 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

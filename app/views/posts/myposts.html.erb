@@ -1,9 +1,32 @@
 <%= stylesheet_link_tag("post")%>
+
 <p style="color: green"><%= notice %></p>
-<div id="posts" class="text-center">
-  <% @posts.each do |post| %>
-    <% if post.user.id == current_user.id %>
-      <%= render post %>
-    <% end %>
-  <% end %>
+<div class="container" style="z-index: 15;">  
+  <div class="row ">
+    <div 
+      class=" text-center ml-xl-5 col-xl-12 col-lg-10 col-md-8 col-sm-6 col-6 my-block" 
+      style="  margin-left: 100px; margin-top: 20px; padding: 20px; background-color: #f2f2f2; z-index:10;"
+    >
+    <%= render partial: 'users/user', locals: { user: current_user } %>
+     
+    </div>
+  </div>
 </div>
+<div class="container" style="z-index: 15;">  
+  <div class="row ">
+    <div 
+      class=" text-center ml-xl-5 col-xl-12 col-lg-10 col-md-8 col-sm-6 col-6 my-block" 
+      style="  margin-left: 100px; margin-top: 20px; padding: 20px; background-color: #f2f2f2; z-index:10;"
+    >
+    
+      <div id="posts" class="text-center">
+        <% @posts.each do |post| %>
+          <% if post.user.id == current_user.id %>
+            <%= render post %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

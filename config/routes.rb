@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   post 'users/:id/accept',    to:"users#accept",    as:"accept"
   post 'users/:id/decline',   to:"users#decline",   as:"decline"
   post 'users/:id/cancel',    to:"users#cancel",    as:"cancel"
+  get 'users/:id/followers',  to: 'users#followers', as: 'followers_user'
+  get 'users/:id/following',  to: 'users#following', as: 'following_user'
+
 
   get 'myposts', to: 'posts#myposts'
   get 'discover', to: 'posts#discover'

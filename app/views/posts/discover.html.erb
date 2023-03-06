@@ -1,5 +1,9 @@
-<div style="margin-top: 20px;">
-<% @posts.each do |post| %>
-  <%= render post %>
-<% end %>
-</div>
+<%= stylesheet_link_tag("post") %>
+
+   
+  <div id="posts" class="text-center mt-4">
+    <% @posts.each do |post| %>
+      <%= render post %>
+    <% end %>
+ 
+  </div>

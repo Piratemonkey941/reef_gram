@@ -39,8 +39,17 @@ class UsersController < ApplicationController
    def cancel
     current_user.remove_follow_request_for(@user)
     redirect_to users_path(@user)
+   end
+   
+  def followers
+    @followers = @user.followers
   end
-    def set_user
+
+  def following
+    @following = @user.following
+  end
+
+  def set_user
 
     @user = User.find(params[:id])
   end
