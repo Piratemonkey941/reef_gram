@@ -56,7 +56,7 @@ gem "followability"
 gem "ransack"
 gem "rails_admin"
 gem "pagy"
-
+gem 'chart-js-rails'
 
 
 

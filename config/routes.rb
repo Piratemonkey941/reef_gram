@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'users/:id/followers',  to: 'users#followers', as: 'followers_user'
   get 'users/:id/following',  to: 'users#following', as: 'following_user'
 
+  get '/graphs', to: 'graphs#index'
 
   get 'myposts', to: 'posts#myposts'
   get 'discover', to: 'posts#discover'
