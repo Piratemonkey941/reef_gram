@@ -4,3 +4,4 @@
 //= link_tree ../builds
 
 // = link post.css
+//= link application.css

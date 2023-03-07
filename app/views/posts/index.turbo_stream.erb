@@ -3,9 +3,10 @@
 <%= turbo_stream.append :posts do %>                <!-- Append the following content to the Turbo stream with the identifier :posts -->
   <% @posts.each do |post| %>                       <!-- For each post in the @posts collection, iterate over them -->
     <% if user_signed_in? %>                        <!-- Check if a user is signed in -->
-      <% if current_user.following?(post.user) %>   <!-- Check if the current user is following the author of the post -->
+      <% if current_user != nil && current_user.following?(post.user)  %>   <!-- Check if the current user is following the author of the post -->
         <%= render post %>                          <!-- Render the post if the current user is following the author -->
       <% end %>
+      
     <% end %>
   <% end %>
   <% if !user_signed_in? %>                         <!-- If a user is not signed in -->
